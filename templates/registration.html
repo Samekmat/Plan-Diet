@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}
+    Registration page
+{% endblock %}
+{% block content %}
+
+    <form method="post" class="form-signin">
+    <h2>Register new account</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="register" class="btn btn-sm btn-success form-control">
+    </form>
+
+{% endblock %}

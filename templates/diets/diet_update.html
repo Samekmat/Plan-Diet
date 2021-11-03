@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    Update
+{% endblock %}
+{% block content %}
+
+
+    <form method="post" class="form-signin" style="margin-top: 50px">
+    <h2>Update diet '{{ object.name }}'</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="save" class="widthe btn btn-danger btn-lg">
+    </form>
+
+{% endblock %}

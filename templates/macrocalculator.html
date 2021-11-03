@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    Macros
+{% endblock %}
+{% block content %}
+    <form method="post" class="widthe">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="calculate" class="widthe btn-dark">
+    </form>
+    <div class="form-box" style="background-color: #d1e7dd">
+    <h1 class="p-lower">Results:</h1>
+    {% if bmr %}
+        <p>Your BMR(basal metabolic rate) is {{ bmr }} kcal</p>
+    {% endif %}
+    {% if cpm %}
+        <p>Your TMR(total metabolic rate is {{ cpm }} kcal/day</p>
+    {% endif %}
+    </div>
+{% endblock %}

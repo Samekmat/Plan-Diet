@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    Plan no.{{ plan.pk }}
+{% endblock %}
+{% block content %}
+    <div class="plan-box">
+    <h2 class="p-lower">Plan {{ plan.name }}</h2>
+    <p><b>Diet:</b> {{ plan.diet }}</p>
+    <p>Exercises list:</p>
+    <ul>
+        {% if plan %}
+        {% for exercise in plan.exercises.all %}
+            <li>{{ exercise.name }}</li>
+        {% endfor %}
+        {% endif %}
+
+    </ul>
+    <a class="btn btn-outline-dark" href="{% url 'plan-list' %}">To plans list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    Index
+{% endblock %}
+{% block content %}
+    <h2>Links</h2>
+    <ul>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'exercise-list' %}">To exercises</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'categories' %}">To categories</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'diet-list' %}">To diets</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'diet-add' %}">Add diet</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'plan-list' %}">To plans</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'plan-add' %}">Add plan</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'login' %}">Login panel</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'register' %}">Register</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'macro-calc' %}">Calculator</a></li>
+        <hr class="widthe">
+        <li><a class="btn btn-outline-info widthe" href="{% url 'profile' %}">User profile</a></li>
+        <hr class="widthe">
+    </ul>
+{% endblock %}
