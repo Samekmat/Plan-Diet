@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     Login page
@@ -12,7 +13,7 @@
     <form method="post" class="form-signin">
     <h2 class="form-signin-heading p-lower">Please Log in</h2>
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <p class="p-lower">Register <a href="/register">new account</a></p>
         <input type="submit" value="Log in" class="btn btn-lg btn-primary form-control">
     </form>

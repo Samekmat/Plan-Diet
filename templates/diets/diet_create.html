@@ -7,7 +7,7 @@
     <form method="post" class="form-signin" style="margin-top: 50px">
     <h2>Add diet</h2>
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <input type="submit" value="add" class="widthe btn btn-warning btn-lg">
     </form>
 

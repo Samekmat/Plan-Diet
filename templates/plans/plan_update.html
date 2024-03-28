@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block title %}
     Update
 {% endblock %}
@@ -7,7 +9,7 @@
     <form method="post" class="form-signin" style="margin-top: 50px">
     <h2>Update {{ object.name }}</h2>
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <input type="submit" value="save" class="widthe btn btn-danger btn-lg">
     </form>
 

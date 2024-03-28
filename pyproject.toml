@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "plandiet-main"
+name = "plandiet"
 version = "0.1.0"
 description = ""
 authors = ["Mateusz Samek <samekmat@gmail.com>"]

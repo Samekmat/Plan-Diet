@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block title %}
     Delete
 {% endblock %}
@@ -7,7 +9,7 @@
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <h1>Do you want to delete the plan '{{ object.name }}'?</h1>
         <p><input class="btn btn-info" type="submit" value="Yes"> <a class="btn btn-warning" href="{% url 'plan-list' %}">Cancel</a></p>
     </form>
