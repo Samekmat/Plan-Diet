@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "plandiet-main"
+version = "0.1.0"
+description = ""
+authors = ["Mateusz Samek <samekmat@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.3"
+django-environ = "^0.11.2"
+psycopg2-binary = "^2.9.9"
+ruff = "^0.3.4"
+black = "^24.3.0"
+crispy-bootstrap5 = "^2024.2"
+django-crispy-forms = "^2.1"
+
+[tool.poetry.group.dev.dependencies]
+django-silk = "^5.1.0"
+django-debug-toolbar = "^4.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
