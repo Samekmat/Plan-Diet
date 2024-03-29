@@ -43,6 +43,7 @@ jobs:
       run: |
         poetry install
     - name: Run Tests
+      working-directory: ./src
       run: |
         poetry run python manage.py test
       env:
@@ -59,4 +60,4 @@ jobs:
         poetry run safety
     - name: Run Ruff
       run: |
-        poetry run ruff src
+        poetry run ruff ./src
