@@ -57,7 +57,7 @@ jobs:
         poetry run bandit -r .
     - name: Run Safety
       run: |
-        poetry run safety
+        poetry run safety check
     - name: Run Ruff
       run: |
-        poetry run ruff ./src
+        poetry run ruff check .
