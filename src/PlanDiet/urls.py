@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from plandiet_app.views import ExerciseView, ExerciseListView, LoginView, RegistrationFormView, Index, LogoutView,\
+from src.plandiet_app.views import ExerciseView, ExerciseListView, LoginView, RegistrationFormView, Index, LogoutView,\
     CategoryListView, CategoryView, DietView, DietCreateView,\
     DietUpdateView, DietDeleteView, DietListView, PlanListView, PlanView, PlanCreateView, PlanUpdateView,\
     PlanDeleteView, MacroCalculatorView, ProfileView

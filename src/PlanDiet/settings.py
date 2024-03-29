@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # apps
-    'plandiet_app',
+    'src.plandiet_app',
 
     # bootstrap
     'crispy_forms',

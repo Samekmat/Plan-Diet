@@ -1,6 +1,6 @@
 import pytest
 
-from plandiet_app.models import Exercise, CustomUser, Category, Diet, Plan
+from src.plandiet_app.models import Exercise, CustomUser, Category, Diet, Plan
 from django.test import Client
 
 

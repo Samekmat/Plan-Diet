@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class PlandietAppConfig(AppConfig):
-    name = 'plandiet_app'
+    name = 'src.plandiet_app'
