@@ -1,5 +1,5 @@
 📃
-"PlanDiet" is my project where user can register with some extra informations (age, height, weight, sex) and use calculator to calculate BMR (Basal Metabolic Rate) and TMR (Total Metabolic Rate). In a nutshell macro/caloric demand based on informations we gave. There is also database with exercises and possibilty to manage Diets (macro and caloric demands) and plans (diet, list of exercises).
+"PlanDiet" - project where user can register with some extra informations (age, height, weight, sex) and use calculator to calculate BMR (Basal Metabolic Rate) and TMR (Total Metabolic Rate). In a nutshell macro/caloric demand based on informations we gave. There is also space for exercises and possibilty to manage Diets (macro and caloric demands) and plans (diet, list of exercises).
 
 ⚙️Technologies / tools:
   - Django as backend
