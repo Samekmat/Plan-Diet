@@ -1,32 +1,11 @@
 from django.contrib import admin
-from .models import CustomUser, Category, MuscleGroup, SportType, Exercise, Diet, Plan
-from .forms import CustomUserCreationForm
-from django.contrib.auth.admin import UserAdmin
+
+from categories.models import Category
+from diets.models import Diet
+from exercises.models import MuscleGroup, SportType, Exercise
+from plans.models import Plan
 
 
-class CustomUserAdmin(UserAdmin):
-    model = CustomUser
-    add_form = CustomUserCreationForm
-    fieldsets = (
-        *UserAdmin.fieldsets,
-        (
-            'User data',
-            {
-                'fields': (
-                    'age',
-                    'height',
-                    'weight',
-                    'sex',
-                    'plan',
-                    'diet',
-
-                )
-            }
-        )
-    )
-
-
-admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Category)
 admin.site.register(MuscleGroup)
 admin.site.register(SportType)

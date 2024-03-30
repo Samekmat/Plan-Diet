@@ -35,7 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # apps
-    'src.plandiet_app',
+    'plandiet_app',
+    'users',
+    'plans',
+    'exercises',
+    'diets',
+    'categories',
 
     # bootstrap
     'crispy_forms',
@@ -51,6 +56,8 @@ CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
+    "silk.middleware.SilkyMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,7 +123,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'plandiet_app.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'
+
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/users/profile/'
+
+LOGIN_TEMPLATE = '/users/login.html'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
