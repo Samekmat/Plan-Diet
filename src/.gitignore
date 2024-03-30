@@ -212,7 +212,7 @@ pyvenv.cfg
 pip-selfcheck.json
 env/*
 venv/*
-.idea/*
+../.idea/vcs.xml
 
 .env
 
