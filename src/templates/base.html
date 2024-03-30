@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/quartz/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body class="p-3 mb-2 bg-secondary text-white">
+
+{% include 'navbar.html' %}
 
     <div class="container">
     {% block content %}
@@ -13,16 +15,5 @@
     {% endblock %}
     </div>
 
-<footer class="footer">
-    <div class="container">
-    <p class="text-muted">
-    {% if user.is_authenticated %}
-                logged in <a href="{% url 'users:logout' %}">Log out</a>
-            {% else %}
-                not logged in <a href="{% url 'users:login' %}">Log in</a>
-            {% endif %}
-    </p>
-    </div>
-</footer>
 </body>
 </html>

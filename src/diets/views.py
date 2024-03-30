@@ -54,7 +54,7 @@ class DietDeleteView(DeleteView):
     # PermissionRequiredMixin,
     # permission_required = 'plandiet_app.delete_diet'
     template_name = 'diets/diet_delete.html'
-    success_url = 'diets/diet_list'
+    success_url = '/diet_list'
 
     def get_object(self):
         id_ = self.kwargs.get("pk")

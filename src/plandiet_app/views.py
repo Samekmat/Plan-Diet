@@ -22,11 +22,11 @@ class MacroCalculatorView(View):
                 'weight': current_user.weight,
                 'sex': current_user.sex,
                 })
-            return render(request, 'macrocalculator.html', {'form': form})
+            return render(request, 'plandiet_app/macrocalculator.html', {'form': form})
 
         except:
             form = MacroCalculatorForm()
-            return render(request, 'macrocalculator.html', {'form': form})
+            return render(request, 'plandiet_app/macrocalculator.html', {'form': form})
 
     def post(self, request):
         form = MacroCalculatorForm(request.POST)
@@ -41,4 +41,4 @@ class MacroCalculatorView(View):
             bmr = bmr_calc(sex, weight, height, age)
             cpm = cpm_calc(goal, bmr, activity)
 
-        return render(request, 'macrocalculator.html', {'form': form, 'bmr': bmr, 'cpm': cpm})
+        return render(request, 'plandiet_app/macrocalculator.html', {'form': form, 'bmr': bmr, 'cpm': cpm})

@@ -3,28 +3,18 @@
     Index
 {% endblock %}
 {% block content %}
-    <h2>Links</h2>
-    <ul>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'exercises:exercise-list' %}">To exercises</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'categories:categories' %}">To categories</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'diets:diet-list' %}">To diets</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'diets:diet-create' %}">Add diet</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'plans:plan-list' %}">To plans</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'plans:plan-create' %}">Add plan</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'users:login' %}">Login panel</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'users:register' %}">Register</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'macro-calc' %}">Calculator</a></li>
-        <hr class="widthe">
-        <li><a class="btn btn-outline-info widthe" href="{% url 'users:profile' %}">User profile</a></li>
-        <hr class="widthe">
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h2>Welcome to the Index Page of PlanDiet</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Feel free to test out management functionalities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

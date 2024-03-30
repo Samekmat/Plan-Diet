@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.views import LoginView
 from django.urls import include, path
 
 from plandiet_app.views import Index, MacroCalculatorView
@@ -13,7 +12,6 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('index/', Index.as_view(), name='index'),
-    path('', LoginView.as_view(), name='login-main'),
     path('macro_calculator/', MacroCalculatorView.as_view(), name='macro-calc'),
 ]
 
