@@ -1,6 +1,6 @@
 CATEGORIES = (
-    ('endurance', "Endurance"),
-    ('strength', "Strength"),
-    ('flexibility', "Flexibility"),
-    ('balance', "Balance"),
+    ("endurance", "Endurance"),
+    ("strength", "Strength"),
+    ("flexibility", "Flexibility"),
+    ("balance", "Balance"),
 )

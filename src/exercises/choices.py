@@ -1,5 +1,5 @@
 DIFFICULTIES = (
-    ('beginner', "Beginner"),
-    ('intermediate', "Intermediate"),
-    ('advanced', "Advanced"),
+    ("beginner", "Beginner"),
+    ("intermediate", "Intermediate"),
+    ("advanced", "Advanced"),
 )

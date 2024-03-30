@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 from diets.models import Diet
 from plandiet_app.choices import SEX

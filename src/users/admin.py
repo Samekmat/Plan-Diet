@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .forms import CustomUserCreationForm
 from django.contrib.auth.admin import UserAdmin
 
+from .forms import CustomUserCreationForm
 from .models import CustomUser
 
 
@@ -11,19 +11,18 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         *UserAdmin.fieldsets,
         (
-            'User data',
+            "User data",
             {
-                'fields': (
-                    'age',
-                    'height',
-                    'weight',
-                    'sex',
-                    'plan',
-                    'diet',
-
+                "fields": (
+                    "age",
+                    "height",
+                    "weight",
+                    "sex",
+                    "plan",
+                    "diet",
                 )
-            }
-        )
+            },
+        ),
     )
 
 

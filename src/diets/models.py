@@ -11,7 +11,7 @@ class Diet(models.Model):
     description = models.TextField()
 
     def get_absolute_url(self):
-        return reverse('diet', kwargs={'pk': self.pk})
+        return reverse("diet", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.name

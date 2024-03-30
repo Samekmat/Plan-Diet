@@ -9,10 +9,9 @@ urlpatterns = [
     path("", include("exercises.urls")),
     path("", include("plans.urls")),
     path("", include("users.urls")),
-
-    path('admin/', admin.site.urls),
-    path('index/', Index.as_view(), name='index'),
-    path('macro_calculator/', MacroCalculatorView.as_view(), name='macro-calc'),
+    path("admin/", admin.site.urls),
+    path("index/", Index.as_view(), name="index"),
+    path("macro_calculator/", MacroCalculatorView.as_view(), name="macro-calc"),
 ]
 
 urlpatterns += [path("silk/", include("silk.urls", namespace="silk"))]

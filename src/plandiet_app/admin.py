@@ -2,9 +2,8 @@ from django.contrib import admin
 
 from categories.models import Category
 from diets.models import Diet
-from exercises.models import MuscleGroup, SportType, Exercise
+from exercises.models import Exercise, MuscleGroup, SportType
 from plans.models import Plan
-
 
 admin.site.register(Category)
 admin.site.register(MuscleGroup)
