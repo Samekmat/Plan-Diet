@@ -14,7 +14,7 @@
     <h2 class="form-signin-heading p-lower">Please Log in</h2>
         {% csrf_token %}
         {{ form|crispy }}
-        <p class="p-lower">Register <a href="/register">new account</a></p>
+        <p class="p-lower">Register <a href="{% url 'users:register' %}">new account</a></p>
         <input type="submit" value="Log in" class="btn btn-lg btn-primary form-control">
     </form>
     </div>

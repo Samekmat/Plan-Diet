@@ -5,7 +5,7 @@
     <h2 class="align-content-center">Exercise list :</h2>
     {% for exercise in pages %}
     <ul>
-        <li> <a class="btn btn-info btn-sm btn-link widthe" href="/exercise/{{ exercise.id }}">{{ exercise.name }}</a> </li>
+        <li> <a class="btn btn-info btn-sm btn-link widthe" href="{% url 'exercises:exercise-detail' exercise.pk %}">{{ exercise.name }}</a> </li>
     </ul>
     {% endfor %}
     </div>

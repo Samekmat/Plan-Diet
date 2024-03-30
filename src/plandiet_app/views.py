@@ -23,6 +23,7 @@ class MacroCalculatorView(View):
                 'sex': current_user.sex,
                 })
             return render(request, 'macrocalculator.html', {'form': form})
+
         except:
             form = MacroCalculatorForm()
             return render(request, 'macrocalculator.html', {'form': form})

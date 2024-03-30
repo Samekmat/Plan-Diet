@@ -11,7 +11,7 @@
         {% csrf_token %}
         {{ form|crispy }}
         <h1>Do you want to delete the diet '{{ object.name }}'?</h1>
-        <p><input class="btn btn-info" type="submit" value="Yes"> <a class="btn btn-warning" href="{% url 'diet-list' %}">Cancel</a></p>
+        <p><input class="btn btn-info" type="submit" value="Yes"> <a class="btn btn-warning" href="{% url 'diets:diet-list' %}">Cancel</a></p>
     </form>
 
 {% endblock %}

@@ -36,7 +36,7 @@ class DietCreateView(CreateView):
     template_name = 'diets/diet_create.html'
 
     def get_success_url(self):
-        return reverse("diet", kwargs={'pk': self.object.pk})
+        return reverse("diets:diet-detail", kwargs={'pk': self.object.pk})
 
 
 class DietUpdateView(UpdateView):
@@ -54,7 +54,7 @@ class DietDeleteView(DeleteView):
     # PermissionRequiredMixin,
     # permission_required = 'plandiet_app.delete_diet'
     template_name = 'diets/diet_delete.html'
-    success_url = '/diet_list'
+    success_url = 'diets/diet_list'
 
     def get_object(self):
         id_ = self.kwargs.get("pk")

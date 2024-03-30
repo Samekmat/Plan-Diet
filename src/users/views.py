@@ -11,7 +11,7 @@ from users.models import CustomUser
 class LoginView(View):
     def get(self, request):
         form = LoginForm()
-        return render(request, 'users/login.html', {'form': form})
+        return render(request, 'registration/login.html', {'form': form})
 
     def post(self, request):
         form = LoginForm(request.POST)
@@ -19,9 +19,9 @@ class LoginView(View):
             user = authenticate(username=form.cleaned_data['login'], password=form.cleaned_data['password'])
             if user:
                 login(request, user)
-                return redirect('/index')
+                return redirect('index')
             else:
-                return render(request, 'users/login.html', {'form': form, 'error': "User can't be found"})
+                return render(request, 'registration/login.html', {'form': form, 'error': "User can't be found"})
 
 
 class LogoutView(View):
@@ -34,7 +34,7 @@ class LogoutView(View):
 class RegistrationFormView(FormView):
     def get(self, request):
         form = RegistrationForm()
-        return render(request, 'users/registration.html', {'form': form})
+        return render(request, 'registration/register.html', {'form': form})
 
     def post(self, request):
         form = RegistrationForm(request.POST)
@@ -50,8 +50,8 @@ class RegistrationFormView(FormView):
                 weight=form.cleaned_data['weight'],
                 sex=form.cleaned_data['sex']
                 )
-            return redirect('/login')
-        return render(request, 'users/registration.html', {'form': form})
+            return redirect('login')
+        return render(request, 'registration/register.html', {'form': form})
 
 
 class ProfileView(View):

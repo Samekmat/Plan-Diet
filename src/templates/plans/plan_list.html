@@ -6,9 +6,9 @@
     <h2>Plans:</h2>
     {% for plan in pages %}
     <ul>
-        <li> <a class="btn btn-info btn-link widthe" href="/plan/{{ plan.id }}">{{ plan.name }}</a>
-                            <a class="btn btn-dark" href="/plan/update/{{ plan.id }}">modify</a>
-                            <a class="btn btn-danger" href="/plan/delete/{{ plan.id }}">delete</a>
+        <li> <a class="btn btn-info btn-link widthe" href="{% url 'plans:plan-detail' plan.pk %}">{{ plan.name }}</a>
+                            <a class="btn btn-dark" href="{% url 'plans:plan-update' plan.pk %}">modify</a>
+                            <a class="btn btn-danger" href="{% url 'plans:plan-delete' plan.pk %}">delete</a>
         </li>
     </ul>
     {% endfor %}
