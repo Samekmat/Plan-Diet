@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
+
 {% block title %}
     Plan no.{{ plan.pk }}
 {% endblock %}
-{% block content %}
-    <div class="plan-box">
-    <h2 class="p-lower">Plan {{ plan.name }}</h2>
-    <p><b>Diet:</b> {{ plan.diet }}</p>
-    <p>Exercises list:</p>
-    <ul>
-        {% if plan %}
-        {% for exercise in plan.exercises.all %}
-            <li>{{ exercise.name }}</li>
-        {% endfor %}
-        {% endif %}
 
-    </ul>
-    <a class="btn btn-outline-dark" href="{% url 'plans:plan-list' %}">To plans list</a>
+{% block content %}
+    <div class="container mt-4">
+        <div class="plan-box p-4 border rounded">
+            <h2 class="p-lower">Plan {{ plan.name }}</h2>
+            <p><strong>Diet:</strong> {{ plan.diet }}</p>
+            <p>Exercises list:</p>
+            <ul class="list-group">
+                {% if plan %}
+                    {% for exercise in plan.exercises.all %}
+                        <li class="list-group-item">{{ exercise.name }}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            <a class="btn btn-outline-dark mt-3" href="{% url 'plans:plan-list' %}">To plans list</a>
+        </div>
     </div>
 {% endblock %}
