@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>{{ category.name }}</h2>
-    <p>{{ category.description }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>{{ category.name }}</h2>
+                <p>{{ category.description }}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

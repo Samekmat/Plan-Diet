@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Categories :</h2>
-    {% for category in categories %}
-    <ul>
-        <li> <a class="btn btn-danger btn-sm btn-link widthe" href="{% url 'categories:category-detail' category.pk %}">{{ category.name }}</a> </li>
-    </ul>
-    {% endfor %}
-    <div class="d-flex justify-content-center">
-        <a href="{% url 'index' %}" class="btn btn-primary"> Index </a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Categories:</h2>
+                <ul class="list-group">
+                    {% for category in categories %}
+                        <li class="list-group-item">
+                            <a href="{% url 'categories:category-detail' category.pk %}" class="btn btn-danger btn-sm btn-link">{{ category.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="text-center mt-4">
+                    <a href="{% url 'index' %}" class="btn btn-primary">Index</a>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
