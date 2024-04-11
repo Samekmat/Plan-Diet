@@ -14,7 +14,7 @@ class CategoryListView(View):
 class CategoryView(View):
     def get(self, request, id):
         category = Category.objects.get(pk=id)
-        return render(request, "categories/category.html", {"category": category})
+        return render(request, "categories/category_detail.html", {"category": category})
 
 
 class CategoryCreateView(View):
@@ -26,7 +26,7 @@ class CategoryCreateView(View):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("category_list")
+            return redirect("categories:categories")
         return render(request, "categories/category_create.html", {"form": form})
 
 
@@ -38,4 +38,4 @@ class CategoryDeleteView(View):
     def post(self, request, id):
         category = Category.objects.get(pk=id)
         category.delete()
-        return redirect("category_list")
+        return redirect("categories:categories")
