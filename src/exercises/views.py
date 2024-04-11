@@ -13,7 +13,7 @@ class ExerciseView(View):
 
 class ExerciseListView(View):
     def get(self, request):
-        exercises = Exercise.objects.all()
+        exercises = Exercise.objects.order_by("name")
         paginator = Paginator(exercises, 18)
         page = request.GET.get("page", 1)
         try:
