@@ -9,41 +9,56 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'exercises:exercise-list' %}">Exercises</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'categories:categories' %}">Categories</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
+                        <li><a class="dropdown-item" href="{% url 'categories:categories' %}">Category List</a></li>
+                        <li><a class="dropdown-item" href="{% url 'categories:category-create' %}">Category Create</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'diets:diet-list' %}">Diets</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDiets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Diets
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownDiets">
+                        <li><a class="dropdown-item" href="{% url 'diets:diet-list' %}">Diets List</a></li>
+                        <li><a class="dropdown-item" href="{% url 'diets:diet-create' %}">Add Diet</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'diets:diet-create' %}">Add Diet</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPlans" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Plans
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownPlans">
+                        <li><a class="dropdown-item" href="{% url 'plans:plan-list' %}">Plans List</a></li>
+                        <li><a class="dropdown-item" href="{% url 'plans:plan-create' %}">Add Plan</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'plans:plan-list' %}">Plans</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'plans:plan-create' %}">Add Plan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:login' %}">Login Panel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        User
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+                        <li><a class="dropdown-item" href="{% url 'users:login' %}">Login Panel</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:register' %}">Register</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:profile' %}">User Profile</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a class="dropdown-item text-danger text-right" href="{% url 'users:logout' %}">Log out</a></li>
+                        {% endif %}
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'macro-calc' %}">Calculator</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:profile' %}">User Profile</a>
-                </li>
-
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link text-danger text-right" href="{% url 'users:logout' %}">Log out</a>
-                </li>
-            {% endif %}
-
             </ul>
         </div>
     </div>
 </nav>
+
+<style>
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+</style>
