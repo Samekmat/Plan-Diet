@@ -215,6 +215,6 @@ venv/*
 ../.idea/vcs.xml
 
 .idea
-
+todo.md
 
 # End of https://www.gitignore.io/api/python,pycharm
