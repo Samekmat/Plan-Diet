@@ -4,11 +4,13 @@
 {% endblock %}
 {% block content %}
     <h2>Diets:</h2>
+    <a href="{% url 'diets:diet-create' %}" class="btn btn-primary">Add new Diet</a>
     {% for diet in pages %}
     <ul>
-        <li> <a class="btn btn-info btn-link widthe" href="/diet/{{ diet.id }}">{{ diet.name }}</a>
-                            <a class="btn btn-dark" href="/diet/update/{{ diet.id }}">modify</a>
-                            <a class="btn btn-danger" href="/diet/delete/{{ diet.id }}">delete</a>
+        <li>
+            <a class="btn btn-info" href="/diet/{{ diet.id }}">{{ diet.name }}</a>
+            <a class="btn btn-dark" href="/diet/update/{{ diet.id }}">modify</a>
+            <a class="btn btn-danger" href="/diet/delete/{{ diet.id }}">delete</a>
         </li>
     </ul>
     {% endfor %}
@@ -34,8 +36,5 @@
             {% endif %}
         </ul>
     {% endif %}
-    </div>
-    <div class="d-flex justify-content-center">
-        <a href="{% url 'index' %}" class="btn btn-primary"> Index </a>
     </div>
 {% endblock %}

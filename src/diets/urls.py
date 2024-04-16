@@ -6,9 +6,9 @@ app_name = "diets"
 
 
 urlpatterns = [
-    path("diet_list/", views.DietListView.as_view(), name="diet-list"),
-    path("diet/<int:pk>/", views.DietView.as_view(), name="diet-detail"),
-    path("diet/create/", views.DietCreateView.as_view(), name="diet-create"),
-    path("diet/update/<int:pk>/", views.DietUpdateView.as_view(), name="diet-update"),
-    path("diet/delete/<int:pk>/", views.DietDeleteView.as_view(), name="diet-delete"),
+    path("diets/list/", views.DietListView.as_view(), name="diet-list"),
+    path("diets/<int:pk>/", views.DietView.as_view(), name="diet-detail"),
+    path("diets/create/", views.DietCreateView.as_view(), name="diet-create"),
+    path("diets/update/<int:pk>/", views.DietUpdateView.as_view(), name="diet-update"),
+    path("diets/delete/<int:pk>/", views.DietDeleteView.as_view(), name="diet-delete"),
 ]
