@@ -9,7 +9,7 @@ from categories.views import (
 )
 
 
-class TestUrls(SimpleTestCase):
+class CategoryUrlsTest(SimpleTestCase):
     def test_category_list_url_resolves(self):
         url = reverse("categories:categories")
         self.assertEqual(resolve(url).func.view_class, CategoryListView)
