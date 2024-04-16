@@ -10,7 +10,7 @@ from diets.models import Diet
 
 class DietListView(View):
     def get(self, request):
-        diets = Diet.objects.all()
+        diets = Diet.objects.all().order_by("pk")
         paginator = Paginator(diets, 10)
         page = request.GET.get("page", 1)
         try:
@@ -22,7 +22,7 @@ class DietListView(View):
         return render(request, "diets/diet_list.html", {"diets": diets, "pages": pages})
 
 
-class DietView(View):
+class DietDetailView(View):
     def get(self, request, pk):
         diet = Diet.objects.get(pk=pk)
 
