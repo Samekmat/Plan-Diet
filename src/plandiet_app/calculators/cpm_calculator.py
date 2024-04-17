@@ -1,4 +1,4 @@
-def cpm_calc(goal, bmr, activity):
+def cpm_calc(goal: str, bmr: float, activity: float) -> float:
     bmr = float(bmr)
     activity = float(activity)
     if goal == "reduce":
