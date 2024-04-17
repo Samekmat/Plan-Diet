@@ -1,3 +1,4 @@
+from django.http import HttpResponseServerError
 from django.shortcuts import render
 from django.views import View
 
@@ -25,12 +26,17 @@ class MacroCalculatorView(View):
             )
             return render(request, "plandiet_app/macrocalculator.html", {"form": form})
 
-        except:
+        except AttributeError:
             form = MacroCalculatorForm()
             return render(request, "plandiet_app/macrocalculator.html", {"form": form})
 
+        except Exception as e:
+            return HttpResponseServerError("An error occurred while processing your request.", e)
+
     def post(self, request):
         form = MacroCalculatorForm(request.POST)
+        bmr = None
+        cpm = None
         if form.is_valid():
             age = form.cleaned_data["age"]
             height = form.cleaned_data["height"]
