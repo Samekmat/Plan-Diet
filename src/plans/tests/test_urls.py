@@ -4,7 +4,7 @@ from django.urls import resolve, reverse
 from plans import views
 
 
-class TestUrls(SimpleTestCase):
+class PlanUrlsTest(SimpleTestCase):
     def test_plan_list_url_resolves(self):
         url = reverse("plans:plan-list")
         self.assertEqual(resolve(url).func.view_class, views.PlanListView)
