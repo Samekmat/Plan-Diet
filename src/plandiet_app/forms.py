@@ -12,3 +12,21 @@ class MacroCalculatorForm(forms.Form):
         label="Activity", choices=ACTIVITY, widget=forms.Select(attrs={"class": "form-control"})
     )
     goal = forms.ChoiceField(label="Goal", choices=GOAL, widget=forms.Select(attrs={"class": "form-control"}))
+
+    def clean_age(self):
+        age = self.cleaned_data.get("age")
+        if age is not None and age <= 0:
+            raise forms.ValidationError("Age must be a positive number.")
+        return age
+
+    def clean_height(self):
+        height = self.cleaned_data.get("height")
+        if height is not None and height <= 0:
+            raise forms.ValidationError("Height must be a positive number.")
+        return height
+
+    def clean_weight(self):
+        weight = self.cleaned_data.get("weight")
+        if weight is not None and weight <= 0:
+            raise forms.ValidationError("Weight must be a positive number.")
+        return weight
