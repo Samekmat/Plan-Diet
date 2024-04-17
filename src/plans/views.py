@@ -10,7 +10,7 @@ from plans.models import Plan
 
 class PlanListView(View):
     def get(self, request):
-        plans = Plan.objects.all()
+        plans = Plan.objects.all().order_by("pk")
         paginator = Paginator(plans, 5)
         page = request.GET.get("page", 1)
         try:
@@ -22,10 +22,10 @@ class PlanListView(View):
         return render(request, "plans/plan_list.html", {"plans": plans, "pages": pages})
 
 
-class PlanView(View):
+class PlanDetailView(View):
     def get(self, request, pk):
         plan = Plan.objects.get(pk=pk)
-        return render(request, "plans/plan.html", {"plan": plan})
+        return render(request, "plans/plan_detail.html", {"plan": plan})
 
 
 class PlanCreateView(CreateView):
@@ -35,7 +35,7 @@ class PlanCreateView(CreateView):
     template_name = "plans/plan_create.html"
 
     def get_success_url(self):
-        return reverse("plan", kwargs={"pk": self.object.pk})
+        return reverse("plans:plan-detail", kwargs={"pk": self.object.pk})
 
 
 class PlanUpdateView(UpdateView):

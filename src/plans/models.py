@@ -11,7 +11,7 @@ class Plan(models.Model):
     exercises = models.ManyToManyField(Exercise, default=None)
 
     def get_absolute_url(self):
-        return reverse("plan", kwargs={"pk": self.pk})
+        return reverse("plans:plan-detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.name
