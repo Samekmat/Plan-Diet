@@ -19,21 +19,24 @@ class DietViewsTest(TestCase):
         self.diet = Diet.objects.first()
 
     def test_diet_list_view(self):
+        self.client.login(username="testuser", password="12345")
         response = self.client.get(reverse("diets:diet-list"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "diets/diet_list.html")
-        self.assertTrue("pages" in response.context)
-        self.assertIsInstance(response.context["pages"], Page)
-        self.assertEqual(len(response.context["pages"].object_list), 10)
+        self.assertTrue("page_obj" in response.context)
+        self.assertIsInstance(response.context["page_obj"], Page)
+        self.assertEqual(len(response.context["page_obj"].object_list), 10)
 
     def test_diet_detail_view(self):
+        self.client.login(username="testuser", password="12345")
         response = self.client.get(reverse("diets:diet-detail", args=(self.diet.pk,)))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "diets/diet.html")
+        self.assertTemplateUsed(response, "diets/diet_detail.html")
         self.assertTrue("diet" in response.context)
         self.assertEqual(response.context["diet"], self.diet)
 
     def test_diet_create_view(self):
+        self.client.login(username="testuser", password="12345")
         data = {
             "name": "New Diet",
             "description": "New Description",
@@ -46,6 +49,7 @@ class DietViewsTest(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_diet_update_view(self):
+        self.client.login(username="testuser", password="12345")
         updated_data = {
             "name": "Updated Diet",
             "description": "Updated Description",
@@ -62,6 +66,7 @@ class DietViewsTest(TestCase):
         self.assertEqual(self.diet.caloric_demand, 3200)
 
     def test_diet_delete_view(self):
+        self.client.login(username="testuser", password="12345")
         response = self.client.post(reverse("diets:diet-delete", args=(self.diet.pk,)))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Diet.objects.filter(pk=self.diet.pk).exists())
