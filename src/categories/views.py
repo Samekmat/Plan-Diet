@@ -1,5 +1,11 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, DetailView, ListView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
 
 from categories.forms import CategoryForm
 from categories.models import Category
@@ -24,7 +30,16 @@ class CategoryCreateView(CreateView):
     success_url = reverse_lazy("categories:categories")
 
 
+class CategoryUpdateView(UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = "categories/category_update.html"
+    success_url = reverse_lazy("categories:categories")
+    context_object_name = "category"
+
+
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = "categories/category_confirm_delete.html"
     success_url = reverse_lazy("categories:categories")
+    context_object_name = "category"
