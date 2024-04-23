@@ -23,3 +23,5 @@ class CustomUser(AbstractUser):
             raise ValidationError("Height must be a positive number.")
         if self.weight is not None and self.weight <= 0:
             raise ValidationError("Weight must be a positive number.")
+
+        super().save(*args, **kwargs)

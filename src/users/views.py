@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import FormView
+from django.views.generic import CreateView
 
-from users.forms import LoginForm, RegistrationForm
+from users.forms import CustomUserCreationForm, LoginForm
 from users.models import CustomUser
 
 
@@ -31,27 +31,16 @@ class LogoutView(View):
         return redirect(reverse("index"))
 
 
-class RegistrationFormView(FormView):
-    def get(self, request):
-        form = RegistrationForm()
-        return render(request, "registration/register.html", {"form": form})
+class RegisterView(CreateView):
+    form_class = CustomUserCreationForm
+    template_name = "registration/register.html"
+    success_url = reverse_lazy("users:login")
 
-    def post(self, request):
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            CustomUser.objects.create_user(
-                username=form.cleaned_data["username"],
-                first_name=form.cleaned_data["first_name"],
-                last_name=form.cleaned_data["last_name"],
-                password=form.cleaned_data["password1"],
-                email=form.cleaned_data["email"],
-                age=form.cleaned_data["age"],
-                height=form.cleaned_data["height"],
-                weight=form.cleaned_data["weight"],
-                sex=form.cleaned_data["sex"],
-            )
-            return redirect("login")
-        return render(request, "registration/register.html", {"form": form})
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.set_password(form.cleaned_data["password1"])
+        user.save()
+        return super().form_valid(form)
 
 
 class ProfileView(View):
