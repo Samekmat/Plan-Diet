@@ -1,36 +1,32 @@
 {% extends 'base.html' %}
-
+{% block title %}
+    Exercise list
+{% endblock %}
 {% block content %}
-    <div>
-    <h2 class="align-content-center">Exercise list :</h2>
-    {% for exercise in pages %}
-    <ul>
-        <li> <a class="btn btn-info btn-sm btn-link widthe" href="{% url 'exercises:exercise-detail' exercise.pk %}">{{ exercise.name }}</a> </li>
-    </ul>
-    {% endfor %}
-    </div>
-
-    <div>
-         {% if pages.has_other_pages %}
-        <ul class="pagination justify-content-center">
-            {% if pages.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page={{ pages.previous_page_number }}"><
-                    previous</a></li>
-            {% endif %}
-
-            {% for page in pages.paginator.page_range %}
-                {% if pages.number == page %}
-                    <li class="page-item disabled"><a class="page-link" href="?page={{ page }}"> {{ page }}</a></li>
-                {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page }}"> {{ page }}</a></li>
-                {% endif %}
-            {% endfor %}
-
-            {% if pages.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ pages.next_page_number }}">> next</a>
-                </li>
-            {% endif %}
-        </ul>
-    {% endif %}
+    <div class="container">
+        <h1>Exercises</h1>
+            <a href="{% url 'exercises:exercise-create' %}" class="btn btn-primary">Add new Exercise</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for exercise in exercises %}
+                    <tr>
+                        <td>{{ diet.name }}</td>
+                        <td>{{ diet.description }}</td>
+                        <td>
+                            <a href="{% url 'exercises:exercise-detail' exercise.pk %}" class="btn btn-info">Details</a>
+                            <a href="{% url 'exercises:exercise-update' exercise.pk %}" class="btn btn-dark">Update</a>
+                            <a href="{% url 'exercises:exercise-delete' exercise.pk %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

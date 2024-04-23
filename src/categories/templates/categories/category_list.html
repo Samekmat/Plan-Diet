@@ -18,8 +18,9 @@
                         <td>{{ category.name }}</td>
                         <td>{{ category.description }}</td>
                         <td>
-                            <a href="{% url 'categories:category-detail' category.id %}" class="btn btn-info">Details</a>
-                            <a href="{% url 'categories:category-delete' category.id %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'categories:category-detail' category.pk %}" class="btn btn-info">Details</a>
+                            <a href="{% url 'categories:category-update' category.pk %}" class="btn btn-dark">Update</a>
+                            <a href="{% url 'categories:category-delete' category.pk %}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}
