@@ -10,7 +10,7 @@ urlpatterns = [
     path("", include("plans.urls")),
     path("", include("users.urls")),
     path("admin/", admin.site.urls),
-    path("index/", Index.as_view(), name="index"),
+    path("", Index.as_view(), name="index"),
     path("macro_calculator/", MacroCalculatorView.as_view(), name="macro-calc"),
 ]
 
