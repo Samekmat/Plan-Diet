@@ -10,7 +10,7 @@ from django.views.generic import (
 from exercises.models import Exercise
 
 
-class ExerciseView(DetailView):
+class ExerciseDetailView(DetailView):
     model = Exercise
     template_name = "exercises/exercise_detail.html"
     context_object_name = "exercise"
