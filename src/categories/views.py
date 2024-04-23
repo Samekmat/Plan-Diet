@@ -1,41 +1,30 @@
-from django.shortcuts import redirect, render
-from django.views import View
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, DetailView, ListView
 
 from categories.forms import CategoryForm
 from categories.models import Category
 
 
-class CategoryListView(View):
-    def get(self, request):
-        categories = Category.objects.all()
-        return render(request, "categories/category_list.html", {"categories": categories})
+class CategoryListView(ListView):
+    model = Category
+    template_name = "categories/category_list.html"
+    context_object_name = "categories"
 
 
-class CategoryView(View):
-    def get(self, request, id):
-        category = Category.objects.get(pk=id)
-        return render(request, "categories/category_detail.html", {"category": category})
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = "categories/category_detail.html"
+    context_object_name = "category"
 
 
-class CategoryCreateView(View):
-    def get(self, request):
-        form = CategoryForm()
-        return render(request, "categories/category_create.html", {"form": form})
-
-    def post(self, request):
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("categories:categories")
-        return render(request, "categories/category_create.html", {"form": form})
+class CategoryCreateView(CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = "categories/category_create.html"
+    success_url = reverse_lazy("categories:categories")
 
 
-class CategoryDeleteView(View):
-    def get(self, request, id):
-        category = Category.objects.get(pk=id)
-        return render(request, "categories/category_confirm_delete.html", {"category": category})
-
-    def post(self, request, id):
-        category = Category.objects.get(pk=id)
-        category.delete()
-        return redirect("categories:categories")
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = "categories/category_confirm_delete.html"
+    success_url = reverse_lazy("categories:categories")

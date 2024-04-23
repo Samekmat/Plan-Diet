@@ -1,26 +1,43 @@
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.shortcuts import render
-from django.views import View
+from django.urls import reverse_lazy
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
 
 from exercises.models import Exercise
 
 
-class ExerciseView(View):
-    def get(self, request, id):
-        exercise = Exercise.objects.get(pk=id)
-        return render(request, "exercises/exercise.html", {"exercise": exercise})
+class ExerciseView(DetailView):
+    model = Exercise
+    template_name = "exercises/exercise_detail.html"
+    context_object_name = "exercise"
 
 
-class ExerciseListView(View):
-    def get(self, request):
-        exercises = Exercise.objects.order_by("name")
-        paginator = Paginator(exercises, 18)
-        page = request.GET.get("page", 1)
-        try:
-            pages = paginator.page(page)
-        except PageNotAnInteger:
-            pages = paginator.page(1)
-        except EmptyPage:
-            pages = paginator.page(paginator.num_pages)
+class ExerciseListView(ListView):
+    model = Exercise
+    template_name = "exercises/exercise_list.html"
+    context_object_name = "exercises"
+    paginate_by = 18
 
-        return render(request, "exercises/exercise_list.html", {"exercises": exercises, "pages": pages})
+
+class ExerciseCreateView(CreateView):
+    model = Exercise
+    fields = "__all__"
+    template_name = "exercises/exercise_create.html"
+    success_url = reverse_lazy("exercise-list")
+
+
+class ExerciseUpdateView(UpdateView):
+    model = Exercise
+    fields = "__all__"
+    template_name = "exercises/exercise_update.html"
+    success_url = reverse_lazy("exercise-list")
+
+
+class ExerciseDeleteView(DeleteView):
+    model = Exercise
+    template_name = "exercises/exercise_confirm_delete.html"
+    success_url = reverse_lazy("exercise-list")
