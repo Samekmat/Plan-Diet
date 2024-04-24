@@ -6,8 +6,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'exercises:exercise-list' %}">Exercises</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false">Exercises</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
+                        <li><a class="dropdown-item" href="{% url 'exercises:exercises' %}">Exercise List</a></li>
+                        <li><a class="dropdown-item" href="{% url 'exercises:exercise-create' %}">Exercise Create</a></li>
+                    </ul>
+                </li>
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false">Muscle Groups</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
+                        <li><a class="dropdown-item" href="{% url 'exercises:musclegroups' %}">Muscle Group List</a></li>
+                        <li><a class="dropdown-item" href="{% url 'exercises:musclegroup-create' %}">Muscle Group Create</a></li>
+                    </ul>
+                </li>
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sport Types</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
+                        <li><a class="dropdown-item" href="{% url 'exercises:sporttypes' %}">Sport Type List</a></li>
+                        <li><a class="dropdown-item" href="{% url 'exercises:sporttype-create' %}">Sport Type Create</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false">
