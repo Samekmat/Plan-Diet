@@ -11,14 +11,28 @@
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
+                    <th>Difficulty</th>
+                    <th>Category</th>
+                    <th>Muscles</th>
+                    <th>Sport Types</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for exercise in exercises %}
                     <tr>
-                        <td>{{ diet.name }}</td>
-                        <td>{{ diet.description }}</td>
+                        <td>{{ exercise.name }}</td>
+                        <td>{{ exercise.description|truncatechars:20 }}</td>
+                        <td>{{ exercise.difficulty }}</td>
+                        <td>{{ exercise.category }}</td>
+                        <td>
+                            {% for muscle in exercise.muscles.all %}
+                                {{ muscle.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}</td>
+                        <td>
+                            {% for sport_type in exercise.type.all %}
+                                {{ sport_type.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}</td>
                         <td>
                             <a href="{% url 'exercises:exercise-detail' exercise.pk %}" class="btn btn-info">Details</a>
                             <a href="{% url 'exercises:exercise-update' exercise.pk %}" class="btn btn-dark">Update</a>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    Muscle Group list
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Muscle Groups</h1>
+            <a href="{% url 'exercises:musclegroup-create' %}" class="btn btn-primary">Add new Muscle Group</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for musclegroup in musclegroups %}
+                    <tr>
+                        <td>{{ musclegroup.name }}</td>
+                        <td>
+                            <a href="{% url 'exercises:musclegroup-update' musclegroup.pk %}" class="btn btn-dark">Update</a>
+                            <a href="{% url 'exercises:musclegroup-delete' musclegroup.pk %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -5,23 +5,7 @@
     <ul>
         <li>Description: {{ exercise.description }}</li>
         <li>Difficulty: {{ exercise.difficulty }}</li>
-        <li>Category:
-            {% if exercise.category_id == 1 %}
-                Endurance
-            {% endif %}
-
-            {% if exercise.category_id == 2 %}
-                Strength
-            {% endif %}
-
-            {% if exercise.category_id == 3 %}
-                Flexibility
-            {% endif %}
-
-            {% if exercise.category_id == 4 %}
-                Balance
-                {% endif %}
-        </li>
+        <li>Category: {{ exercise.category }}</li>
         <li>Muscle parts involved:
             <ul>
                 {% for muscle in exercise.muscles.all %}
@@ -29,7 +13,7 @@
                 {% endfor %}
             </ul>
         </li>
-        <li>Type name:
+        <li>Used in Sport Types such as:
             <ul>
                 {% for sport in exercise.type.all %}
                     <li>{{ sport.name }}</li>
