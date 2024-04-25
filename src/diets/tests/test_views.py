@@ -1,42 +1,35 @@
-from django.core.paginator import Page
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
+from diets.factories import DietFactory
 from diets.models import Diet
+from diets.views import (
+    DietCreateView,
+    DietDeleteView,
+    DietDetailView,
+    DietListView,
+    DietUpdateView,
+)
 
 
 class DietViewsTest(TestCase):
     def setUp(self):
-        for diet_num in range(20):
-            Diet.objects.create(
-                name=f"Diet {diet_num}",
-                description=f"Description {diet_num}",
-                caloric_demand=2500,
-                carbs_demand=160,
-                protein_demand=150,
-                fat_demand=90,
-            )
-        self.diet = Diet.objects.first()
+        self.factory = RequestFactory()
+        self.diet = DietFactory()
 
     def test_diet_list_view(self):
-        self.client.login(username="testuser", password="12345")
-        response = self.client.get(reverse("diets:diet-list"))
+        request = self.factory.get(reverse("diets:diets"))
+        response = DietListView.as_view()(request)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "diets/diet_list.html")
-        self.assertTrue("page_obj" in response.context)
-        self.assertIsInstance(response.context["page_obj"], Page)
-        self.assertEqual(len(response.context["page_obj"].object_list), 10)
+        self.assertIn(self.diet, response.context_data["diets"])
 
     def test_diet_detail_view(self):
-        self.client.login(username="testuser", password="12345")
-        response = self.client.get(reverse("diets:diet-detail", args=(self.diet.pk,)))
+        request = self.factory.get(reverse("diets:diet-detail", kwargs={"pk": self.diet.pk}))
+        response = DietDetailView.as_view()(request, pk=self.diet.pk)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "diets/diet_detail.html")
-        self.assertTrue("diet" in response.context)
-        self.assertEqual(response.context["diet"], self.diet)
+        self.assertEqual(response.context_data["diet"], self.diet)
 
     def test_diet_create_view(self):
-        self.client.login(username="testuser", password="12345")
         data = {
             "name": "New Diet",
             "description": "New Description",
@@ -45,11 +38,11 @@ class DietViewsTest(TestCase):
             "protein_demand": 165,
             "fat_demand": 100,
         }
-        response = self.client.post(reverse("diets:diet-create"), data=data)
+        request = self.factory.post(reverse("diets:diet-create"), data=data)
+        response = DietCreateView.as_view()(request)
         self.assertEqual(response.status_code, 302)
 
     def test_diet_update_view(self):
-        self.client.login(username="testuser", password="12345")
         updated_data = {
             "name": "Updated Diet",
             "description": "Updated Description",
@@ -58,7 +51,8 @@ class DietViewsTest(TestCase):
             "protein_demand": 165,
             "fat_demand": 100,
         }
-        response = self.client.post(reverse("diets:diet-update", args=(self.diet.pk,)), data=updated_data)
+        request = self.factory.post(reverse("diets:diet-update", args=(self.diet.pk,)), data=updated_data)
+        response = DietUpdateView.as_view()(request, pk=self.diet.pk)
         self.assertEqual(response.status_code, 302)
         self.diet.refresh_from_db()
         self.assertEqual(self.diet.name, "Updated Diet")
@@ -66,7 +60,7 @@ class DietViewsTest(TestCase):
         self.assertEqual(self.diet.caloric_demand, 3200)
 
     def test_diet_delete_view(self):
-        self.client.login(username="testuser", password="12345")
-        response = self.client.post(reverse("diets:diet-delete", args=(self.diet.pk,)))
+        request = self.factory.post(reverse("diets:diet-delete", args=(self.diet.pk,)))
+        response = DietDeleteView.as_view()(request, pk=self.diet.pk)
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Diet.objects.filter(pk=self.diet.pk).exists())

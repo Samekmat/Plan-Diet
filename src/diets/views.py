@@ -41,4 +41,4 @@ class DietUpdateView(UpdateView):
 class DietDeleteView(DeleteView):
     model = Diet
     template_name = "diets/diet_delete.html"
-    success_url = "/diet_list"
+    success_url = "/diets/"

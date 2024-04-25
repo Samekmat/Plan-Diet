@@ -10,9 +10,9 @@ from diets.views import (
 )
 
 
-class TestUrls(SimpleTestCase):
+class TestDietUrls(SimpleTestCase):
     def test_diet_list_url_resolves(self):
-        url = reverse("diets:diet-list")
+        url = reverse("diets:diets")
         self.assertEqual(resolve(url).func.view_class, DietListView)
 
     def test_diet_detail_url_resolves(self):
