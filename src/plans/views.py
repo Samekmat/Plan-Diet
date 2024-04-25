@@ -28,18 +28,17 @@ class PlanCreateView(CreateView):
     model = Plan
     form_class = PlanForm
     template_name = "plans/plan_create.html"
-
-    def get_success_url(self):
-        return reverse_lazy("plans:plan-detail", kwargs={"pk": self.object.pk})
+    success_url = reverse_lazy("plans:plans")
 
 
 class PlanUpdateView(UpdateView):
     model = Plan
     form_class = PlanForm
     template_name = "plans/plan_update.html"
+    success_url = reverse_lazy("plans:plans")
 
 
 class PlanDeleteView(DeleteView):
     model = Plan
     template_name = "plans/plan_delete.html"
-    success_url = reverse_lazy("plan-list")
+    success_url = reverse_lazy("plans:plans")

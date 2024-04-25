@@ -6,7 +6,7 @@ from plans import views
 
 class PlanUrlsTest(SimpleTestCase):
     def test_plan_list_url_resolves(self):
-        url = reverse("plans:plan-list")
+        url = reverse("plans:plans")
         self.assertEqual(resolve(url).func.view_class, views.PlanListView)
 
     def test_plan_detail_url_resolves(self):

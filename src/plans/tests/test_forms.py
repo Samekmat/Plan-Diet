@@ -1,23 +1,17 @@
 from django import forms
 from django.test import TestCase
 
-from diets.models import Diet
-from exercises.models import Exercise
+from diets.factories import DietFactory
+from exercises.factories import ExerciseFactory
 from plans.forms import PlanForm
 
 
 class PlanFormTest(TestCase):
     def setUp(self):
-        self.diet = Diet.objects.create(
-            name="Test Diet",
-            caloric_demand=2700,
-            carbs_demand=150,
-            protein_demand=120,
-            fat_demand=90,
-            description="Test desc",
-        )
-        self.exercise1 = Exercise.objects.create(name="Test Exercise 1")
-        self.exercise2 = Exercise.objects.create(name="Test Exercise 2")
+        self.diet = DietFactory()
+
+        self.exercise1 = ExerciseFactory()
+        self.exercise2 = ExerciseFactory()
 
     def test_form_fields(self):
         form = PlanForm()
