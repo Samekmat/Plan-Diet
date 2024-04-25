@@ -1,17 +1,18 @@
 from django.test import TestCase
 
+from categories.factories import CategoryFactory
 from categories.forms import CategoryForm
 
 
 class CategoryFormTest(TestCase):
     def test_category_form_valid_data(self):
-        form_data = {"name": "Test category", "description": "This is a test category."}
-        form = CategoryForm(data=form_data)
+        category = CategoryFactory()
+        form = CategoryForm(data={"name": category.name, "description": category.description})
         self.assertTrue(form.is_valid())
 
     def test_category_form_invalid_data(self):
-        form_data = {"name": "", "description": "This is a test category."}
-        form = CategoryForm(data=form_data)
+        category = CategoryFactory(name="")
+        form = CategoryForm(data={"name": category.name, "description": category.description})
         self.assertFalse(form.is_valid())
 
     def test_category_form_widgets(self):
