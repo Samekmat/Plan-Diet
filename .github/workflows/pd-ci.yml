@@ -43,6 +43,7 @@ jobs:
       run: |
         poetry install
     - name: Run Migrations
+      working-directory: ./src
       run: |
         poetry run python manage.py migrate
       env:
