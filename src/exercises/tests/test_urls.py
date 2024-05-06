@@ -43,34 +43,34 @@ class ExerciseUrlsTest(SimpleTestCase):
         url = reverse("exercises:exercise-delete", kwargs={"pk": 1})
         self.assertEqual(resolve(url).func.view_class, ExerciseDeleteView)
 
-    def test_sporttype_list_url(self):
-        url = reverse("exercises:sporttypes")
+    def test_sport_type_list_url(self):
+        url = reverse("exercises:sport-types")
         self.assertEqual(resolve(url).func.view_class, SportTypeListView)
 
-    def test_sporttype_create_url(self):
-        url = reverse("exercises:sporttype-create")
+    def test_sport_type_create_url(self):
+        url = reverse("exercises:sport-type-create")
         self.assertEqual(resolve(url).func.view_class, SportTypeCreateView)
 
-    def test_sporttype_update_url(self):
-        url = reverse("exercises:sporttype-update", kwargs={"pk": 1})
+    def test_sport_type_update_url(self):
+        url = reverse("exercises:sport-type-update", kwargs={"pk": 1})
         self.assertEqual(resolve(url).func.view_class, SportTypeUpdateView)
 
-    def test_sporttype_delete_url(self):
-        url = reverse("exercises:sporttype-delete", kwargs={"pk": 1})
+    def test_sport_type_delete_url(self):
+        url = reverse("exercises:sport-type-delete", kwargs={"pk": 1})
         self.assertEqual(resolve(url).func.view_class, SportTypeDeleteView)
 
-    def test_musclegroup_list_url(self):
-        url = reverse("exercises:musclegroups")
+    def test_muscle_group_list_url(self):
+        url = reverse("exercises:muscle-groups")
         self.assertEqual(resolve(url).func.view_class, MuscleGroupListView)
 
-    def test_musclegroup_create_url(self):
-        url = reverse("exercises:musclegroup-create")
+    def test_muscle_group_create_url(self):
+        url = reverse("exercises:muscle-group-create")
         self.assertEqual(resolve(url).func.view_class, MuscleGroupCreateView)
 
-    def test_musclegroup_update_url(self):
-        url = reverse("exercises:musclegroup-update", kwargs={"pk": 1})
+    def test_muscle_group_update_url(self):
+        url = reverse("exercises:muscle-group-update", kwargs={"pk": 1})
         self.assertEqual(resolve(url).func.view_class, MuscleGroupUpdateView)
 
-    def test_musclegroup_delete_url(self):
-        url = reverse("exercises:musclegroup-delete", kwargs={"pk": 1})
+    def test_muscle_group_delete_url(self):
+        url = reverse("exercises:muscle-group-delete", kwargs={"pk": 1})
         self.assertEqual(resolve(url).func.view_class, MuscleGroupDeleteView)

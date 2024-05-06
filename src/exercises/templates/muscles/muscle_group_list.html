@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <h1>Muscle Groups</h1>
-            <a href="{% url 'exercises:musclegroup-create' %}" class="btn btn-primary">Add new Muscle Group</a>
+            <a href="{% url 'exercises:muscle-group-create' %}" class="btn btn-primary">Add new Muscle Group</a>
         <table class="table">
             <thead>
                 <tr>
@@ -14,12 +14,12 @@
                 </tr>
             </thead>
             <tbody>
-                {% for musclegroup in musclegroups %}
+                {% for muscle_group in muscle_groups %}
                     <tr>
-                        <td>{{ musclegroup.name }}</td>
+                        <td>{{ muscle_group.name }}</td>
                         <td>
-                            <a href="{% url 'exercises:musclegroup-update' musclegroup.pk %}" class="btn btn-dark">Update</a>
-                            <a href="{% url 'exercises:musclegroup-delete' musclegroup.pk %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'exercises:muscle-group-update' muscle_group.pk %}" class="btn btn-dark">Update</a>
+                            <a href="{% url 'exercises:muscle-group-delete' muscle_group.pk %}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

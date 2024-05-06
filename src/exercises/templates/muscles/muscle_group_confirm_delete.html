@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Confirm Deletion</h1>
-    <p>Are you sure you want to delete "{{ musclegroup.name }}"?</p>
+    <p>Are you sure you want to delete "{{ muscle_group.name }}"?</p>
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Confirm</button>

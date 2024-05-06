@@ -6,25 +6,25 @@ from exercises.models import MuscleGroup
 
 class MuscleGroupListView(ListView):
     model = MuscleGroup
-    template_name = "muscles/musclegroup_list.html"
-    context_object_name = "musclegroups"
+    template_name = "muscles/muscle_group_list.html"
+    context_object_name = "muscle_groups"
 
 
 class MuscleGroupCreateView(CreateView):
     model = MuscleGroup
-    template_name = "muscles/musclegroup_form.html"
+    template_name = "muscles/muscle_group_form.html"
     fields = ["name"]
-    success_url = reverse_lazy("exercises:musclegroups")
+    success_url = reverse_lazy("exercises:muscle-groups")
 
 
 class MuscleGroupUpdateView(UpdateView):
     model = MuscleGroup
-    template_name = "muscles/musclegroup_form.html"
+    template_name = "muscles/muscle_group_form.html"
     fields = ["name"]
-    success_url = reverse_lazy("exercises:musclegroups")
+    success_url = reverse_lazy("exercises:muscle-groups")
 
 
 class MuscleGroupDeleteView(DeleteView):
     model = MuscleGroup
-    template_name = "muscles/musclegroup_confirm_delete.html"
-    success_url = reverse_lazy("exercises:musclegroups")
+    template_name = "muscles/muscle_group_confirm_delete.html"
+    success_url = reverse_lazy("exercises:muscle-groups")

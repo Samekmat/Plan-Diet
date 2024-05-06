@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <h1>Sport Types</h1>
-            <a href="{% url 'exercises:sporttype-create' %}" class="btn btn-primary">Add new Sport Type</a>
+            <a href="{% url 'exercises:sport-type-create' %}" class="btn btn-primary">Add new Sport Type</a>
         <table class="table">
             <thead>
                 <tr>
@@ -14,12 +14,12 @@
                 </tr>
             </thead>
             <tbody>
-                {% for sporttype in sporttypes %}
+                {% for sport_type in sport_types %}
                     <tr>
-                        <td>{{ sporttype.name }}</td>
+                        <td>{{ sport_type.name }}</td>
                         <td>
-                            <a href="{% url 'exercises:sporttype-update' sporttype.pk %}" class="btn btn-dark">Update</a>
-                            <a href="{% url 'exercises:sporttype-delete' sporttype.pk %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'exercises:sport-type-update' sport_type.pk %}" class="btn btn-dark">Update</a>
+                            <a href="{% url 'exercises:sport-type-delete' sport_type.pk %}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -81,14 +81,14 @@ class MuscleGroupViewsTest(TestCase):
         }
 
     def test_muscle_group_list_view(self):
-        request = self.factory.get(reverse("exercises:musclegroups"))
+        request = self.factory.get(reverse("exercises:muscle-groups"))
         response = MuscleGroupListView.as_view()(request)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue("musclegroups" in response.context_data)
-        self.assertTrue(len(response.context_data["musclegroups"]) > 0)
+        self.assertTrue("muscle_groups" in response.context_data)
+        self.assertTrue(len(response.context_data["muscle_groups"]) > 0)
 
     def test_muscle_group_create_view(self):
-        request = self.factory.post(reverse("exercises:musclegroup-create"), data=self.test_data)
+        request = self.factory.post(reverse("exercises:muscle-group-create"), data=self.test_data)
         response = MuscleGroupCreateView.as_view()(request)
         self.assertEqual(response.status_code, 302)
         self.assertTrue(MuscleGroup.objects.filter(name=self.test_data["name"]).exists())
@@ -98,7 +98,7 @@ class MuscleGroupViewsTest(TestCase):
         updated_data = self.test_data.copy()
         updated_data["name"] = updated_name
         request = self.factory.post(
-            reverse("exercises:musclegroup-update", kwargs={"pk": self.muscle_group.pk}), data=updated_data
+            reverse("exercises:muscle-group-update", kwargs={"pk": self.muscle_group.pk}), data=updated_data
         )
         response = MuscleGroupUpdateView.as_view()(request, pk=self.muscle_group.pk)
         self.assertEqual(response.status_code, 302)
@@ -106,7 +106,7 @@ class MuscleGroupViewsTest(TestCase):
         self.assertEqual(self.muscle_group.name, updated_name)
 
     def test_muscle_group_delete_view(self):
-        request = self.factory.post(reverse("exercises:musclegroup-delete", kwargs={"pk": self.muscle_group.pk}))
+        request = self.factory.post(reverse("exercises:muscle-group-delete", kwargs={"pk": self.muscle_group.pk}))
         response = MuscleGroupDeleteView.as_view()(request, pk=self.muscle_group.pk)
         self.assertEqual(response.status_code, 302)
         self.assertFalse(MuscleGroup.objects.filter(pk=self.muscle_group.pk).exists())
@@ -121,22 +121,22 @@ class SportTypeViewsTest(TestCase):
         }
 
     def test_sport_type_list_view(self):
-        url = reverse_lazy("exercises:sporttypes")
+        url = reverse_lazy("exercises:sport-types")
         request = self.factory.get(url)
         response = SportTypeListView.as_view()(request)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue("sporttypes" in response.context_data)
-        self.assertTrue(len(response.context_data["sporttypes"]) > 0)
+        self.assertTrue("sport_types" in response.context_data)
+        self.assertTrue(len(response.context_data["sport_types"]) > 0)
 
     def test_sport_type_create_view(self):
-        url = reverse_lazy("exercises:sporttype-create")
+        url = reverse_lazy("exercises:sport-type-create")
         request = self.factory.post(url, data=self.test_data)
         response = SportTypeCreateView.as_view()(request)
         self.assertEqual(response.status_code, 302)
         self.assertTrue(SportType.objects.filter(name=self.test_data["name"]).exists())
 
     def test_sport_type_update_view(self):
-        url = reverse_lazy("exercises:sporttype-update", kwargs={"pk": self.sport_type.pk})
+        url = reverse_lazy("exercises:sport-type-update", kwargs={"pk": self.sport_type.pk})
         updated_name = "Updated Test Sport Type"
         updated_data = self.test_data.copy()
         updated_data["name"] = updated_name
@@ -147,7 +147,7 @@ class SportTypeViewsTest(TestCase):
         self.assertEqual(self.sport_type.name, updated_name)
 
     def test_sport_type_delete_view(self):
-        url = reverse_lazy("exercises:sporttype-delete", kwargs={"pk": self.sport_type.pk})
+        url = reverse_lazy("exercises:sport-type-delete", kwargs={"pk": self.sport_type.pk})
         request = self.factory.post(url)
         response = SportTypeDeleteView.as_view()(request, pk=self.sport_type.pk)
         self.assertEqual(response.status_code, 302)
